@@ -54,12 +54,18 @@ public class HatController : MonoBehaviour
 
         if (col.CompareTag("Ball"))
         {
-            // ==== 修复特效看不见关键代码 ====
-            if(effect != null)
+            // ========== 特效跟着帽子走 ==========
+            if (effect != null)
             {
-                // 不挂在帽子身上，防止遮挡/错位
                 GameObject neweffect = Instantiate(effect, transform.position, effect.transform.rotation);
-                neweffect.transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+                
+                // 让特效成为帽子的子物体 → 跟着走
+                neweffect.transform.SetParent(transform);
+                
+                // 强制 Z 轴靠前，保证看得见
+                neweffect.transform.localPosition = new Vector3(0, 0, -1);
+                
+                // 1秒后销毁
                 Destroy(neweffect, 1f);
             }
 
