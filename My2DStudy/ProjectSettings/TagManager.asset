@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BowlingBall
   - Ball
+  - "\u9488"
+  - "\u7403"
   layers:
   - Default
   - TransparentFX
